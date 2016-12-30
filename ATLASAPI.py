@@ -5,6 +5,9 @@ import sys
 
 ATLAS_DOMAIN="server1"
 ATLAS_PORT="21000"
+NAMENODE_PRIMARY="server1.hdp"
+NAMENODE_PORT=8020
+CLUSTERNAME="HDP"
 
 RANGER_DOMAIN="server1.hdp"
 RANGER_PORT="6080"
@@ -17,11 +20,34 @@ def atlasREST( restAPI ) :
     return(json.loads(r.text));
 
 
-def atlasPOST( restAPI, data) :
+def atlasPOST( restAPI, postData) :
     url = "http://" + ATLAS_DOMAIN + ":" + ATLAS_PORT + restAPI
-    print (url)
-    r = requests.post(url, auth=("admin", "admin"),json=data)
-    return (json.loads(r.text));
+    print ("curl -d @entity.json -X POST -H \"Content-Type: application/json\" %s" % (url))
+    r = requests.post(url, auth=("admin", "admin"),json=postData)
+
+    jsonResult = {
+        "statusCode": r.status_code,
+        "msg": r.text,
+        "postData" :  postData
+    }
+    if (r.status_code == 200):
+       jsonResult = json.loads(r.text)
+
+    return (jsonResult);
+def atlasPUT( restAPI, postData) :
+    url = "http://" + ATLAS_DOMAIN + ":" + ATLAS_PORT + restAPI
+    print ("curl -d @entity.json -X POST -H \"Content-Type: application/json\" %s" % (url))
+    r = requests.post(url, auth=("admin", "admin"),json=postData)
+
+    jsonResult = {
+        "statusCode": r.status_code,
+        "msg": r.text,
+        "postData" :  postData
+    }
+    if (r.status_code == 200):
+       jsonResult = json.loads(r.text)
+
+    return (jsonResult);
 
 
 def rangerGET( restAPI ) :
