@@ -1,0 +1,32 @@
+{
+  "version": {
+    "version": "1.0.0"
+  },
+  "message": {
+    "entities": [
+      {
+        "jsonClass": "org.apache.atlas.typesystem.json.InstanceSerialization$_Reference",
+        "id": {
+          "jsonClass": "org.apache.atlas.typesystem.json.InstanceSerialization$_Id",
+          "id": "-712321076869990",
+          "version": 0,
+          "typeName": "hive_db",
+          "state": "ACTIVE"
+        },
+        "typeName": "hive_db",
+        "values": {
+          "name": "default",
+          "location": "hdfs://server1.hdp:8020/apps/hive/warehouse",
+          "description": "Default Hive database",
+          "ownerType": 2,
+          "qualifiedName": "default@HDP",
+          "owner": "public",
+          "clusterName": "HDP",
+          "parameters": {}
+        },
+        "traitNames": [],
+        "traits": {}
+      }
+    ]
+  }
+}
